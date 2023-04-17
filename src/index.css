@@ -1,43 +1,53 @@
+/* index. css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* index.css */
-
 html, body {
     font-family: 'Raleway', sans-serif;
-    @apply bg-gradient-to-tl from-slate-900 to-blue-500 text-white bg-fixed  h-full;
+    @apply bg-gradient-to-tl from-slate-500 to-blue-500 text-white bg-fixed h-full
 }
 
-
 .title {
-    @apply font-extrabold my-3 text-white text-[2rem] text-center
-    2xl:text-[18rem]
-    2xl:fixed
-    2xl:bottom-0
-    2xl:z-0
-    2xl:rotate-[270deg]
-    2xl:w-96
-    2xl:-left-12
-    2xl:opacity-30
-    2xl:pointer-events-none
+    @apply font-extrabold my-3 text-[2rem] text-center
+    2xl:text-[18rem] 2xl:fixed 2xl:bottom-0 2xl:z-0 2xl:rotate-[270deg] 2xl:w-96 2xl:-left-12 2xl:opacity-30 2xl:pointer-events-none
 }
 
 .page {
-    @apply max-w-screen-lg mx-auto pt-24 px-3
+    @apply  max-w-screen-lg mx-auto pt-24 px-3
 }
 
 .page-sm {
-
     /* Nel video utilizzo le seguenti classi Tailwind: : */
     /* @apply max-w-screen-sm mx-auto */
 
     /* FIX: consiglio però di utilizzare le seguenti:  */
-    @apply max-w-sm mx-auto
+    @apply  max-w-sm mx-auto
 }
 
+
+/*forms*/
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"] {
+    @apply text-black
+}
+
+textarea.error,
+input[type="text"].error,
+input[type="password"].error,
+input[type="number"].error,
+input[type="email"].error {
+    @apply bg-red-300
+}
+
+
+/*buttons*/
 .btn {
-    @apply px-5 py-2 rounded-full m-1 font-bold text-sm disabled:opacity-30 transition text-center
+    @apply px-5 py-2 rounded-full m-1 font-bold text-sm text-center disabled:opacity-30 transition
 }
 
 .btn.dark {
@@ -56,36 +66,20 @@ html, body {
     @apply bg-pink-500 hover:bg-pink-600 text-white
 }
 
-
 .btn.success {
     @apply bg-green-500 hover:bg-green-700 text-white
 }
 
 .btn.outline {
-    @apply border border-white;
+    @apply border border-white
 }
 
 .btn.lg {
-    @apply text-2xl
+    @apply text-2xl;
 }
 
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="number"],
-input[type="email"] {
-    @apply text-black ;
-}
-
-textarea.error,
-input[type="password"].error,
-input[type="text"].error,
-input[type="number"].error,
-input[type="email"].error {
-    @apply bg-red-300
-}
-
-table-auto th,
+/*tables*/
+.table-auto th,
 .table-auto td {
     @apply border-b border-b-blue-500 py-4 px-2
 }
@@ -93,3 +87,4 @@ table-auto th,
 .table-auto.hover tr:hover {
     @apply bg-blue-500
 }
+
