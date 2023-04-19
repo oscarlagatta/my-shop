@@ -11,7 +11,7 @@ import {
     LoginPage,
     ThanksPage
 } from "./pages";
-import {NavBar} from "@/shared/index";
+import {NavBar} from "@/shared/";
 
 function App() {
 
