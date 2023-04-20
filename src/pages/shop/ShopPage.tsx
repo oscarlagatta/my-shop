@@ -9,6 +9,9 @@ export function ShopPage() {
     const [products, setProducts] = useState<Product[]>([]);
     const [pending, setPending]= useState<boolean>(false);
     const [error, setError ] =  useState<boolean>(false);
+    // const openCartPanel = useCartPanel(state => state.openOverlay);
+
+
     useEffect(() => {
         loadData();
     }, []);
@@ -29,7 +32,7 @@ export function ShopPage() {
     }
 
     function addToCard(product: Partial<Product>) {
-        console.log(product)
+        // openCartPanel();
     }
 
     return (
