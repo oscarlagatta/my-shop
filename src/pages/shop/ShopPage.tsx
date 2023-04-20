@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import {pb} from "../../pocketbase";
 import {ProductCard} from "./components/ProductCard";
 import {ServerError, Spinner} from "@/shared/";
+import {useCart, useCartPanel} from "@/services/cart";
 
 /**
 
@@ -22,6 +23,9 @@ export function ShopPage(): JSX.Element {
     const [products, setProducts] = useState<Product[]>([]);
     const [pending, setPending] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
+
+    const openCartPanel = useCartPanel((state) => state.openOverlay);
+    const addToCart = useCart((state) => state.addToCart);
 
     /**
 
@@ -49,9 +53,10 @@ export function ShopPage(): JSX.Element {
      @function
      @param {Partial<Product>} product - The product to add to the cart.
      */
-    function addToCard(product: Partial<Product>): void {
-// openCartPanel();
-    }
+    // function addToCart(product: Partial<Product>): void {
+    //     console.log('product:: ', product);
+    //     openCartPanel();
+    // }
 
     useEffect(() => {
         loadData();
@@ -67,7 +72,10 @@ export function ShopPage(): JSX.Element {
                     products.map(product =>
                         <ProductCard key={product.id}
                                      product={product}
-                                     onAddToCart={addToCard}
+                                     onAddToCart={() => {
+                                         openCartPanel();
+                                         addToCart(product)
+                                     }}
                         />)
                 }
             </div>
