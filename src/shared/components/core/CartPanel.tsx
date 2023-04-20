@@ -1,11 +1,20 @@
 import {useNavigate} from "react-router-dom";
 import {useCartPanel} from "@/services/cart";
 
+/**
+ The cart panel component that shows the list of products in the cart and allows the user to navigate to the cart page.
+ @function
+ @returns {JSX.Element} The JSX element representing the cart panel component.
+ */
 export function CartPanel() {
 
     const navigate = useNavigate();
     const closeCartPanel = useCartPanel(state => state.closeOverlay);
 
+    /**
+     A function that navigates to the cart page and closes the cart panel.
+     @function
+     */
     function gotoCart() {
         navigate('cart');
         closeCartPanel();

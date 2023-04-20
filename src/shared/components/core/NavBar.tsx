@@ -1,15 +1,28 @@
-
-import { NavLink } from 'react-router-dom';
+/**
+ NavBar component that displays the application's navigation bar
+ @returns {JSX.Element} Navigation bar component
+ */
+import {NavLink} from 'react-router-dom';
 import logo from '../../../assets/laptop.png';
-import { CartPanel } from './CartPanel';
+import {CartPanel} from './CartPanel';
 import {useCartPanel} from "@/services/cart";
 
 
+/**
 
+ Function that returns the active class based on the isActive property
+ @param {Object} obj - Object with isActive property
+ @returns {string} CSS classes based on the isActive property
+ */
 const isActive = (obj: { isActive: boolean }) => {
     return obj.isActive ? 'text-xl text-sky-400 font-bold' : 'text-xl text-white'
 }
 
+/**
+ Navigation bar component that includes a logo, a link to the shop page, a cart button badge, a cart panel,
+ and action buttons.
+ @returns {JSX.Element} Navigation bar component
+ */
 export function NavBar() {
     const isCartPanelOpened = useCartPanel(state => state.open);
     const toggleCartPanel = useCartPanel(state => state.toggle);
@@ -32,7 +45,7 @@ export function NavBar() {
                 </div>
 
                 {/*Cart Panel*/}
-                { isCartPanelOpened && <CartPanel/>}
+                {isCartPanelOpened && <CartPanel/>}
 
 
                 {/*actions button*/}
