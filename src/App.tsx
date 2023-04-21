@@ -12,13 +12,17 @@ import {
     ThanksPage
 } from "./pages";
 import {NavBar} from "@/shared/";
+import {PrivateRoute} from "@/shared/*";
 
 function App() {
 
     return (
         <BrowserRouter>
+
             <NavBar/>
             <hr/>
+
+
             <div className="page">
                 <Routes>
                     <Route path="shop" element={<ShopPage/>}/>
@@ -28,7 +32,11 @@ function App() {
                     <Route path="login" element={<LoginPage/>}/>
 
 
-                    <Route path="cms" element={<CMSPage/>}>
+                    <Route path="cms" element={
+                        <PrivateRoute>
+                            <CMSPage/>
+                        </PrivateRoute>
+                        }>
                         <Route path="products" element={<CMSProductsPage/>}/>
                         <Route path="orders" element={<CMSOrdersPage/>}/>
                         <Route index element={<Navigate to="products"/>}/>
