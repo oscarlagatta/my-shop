@@ -2,17 +2,17 @@ import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
 import React from "react";
 import {
-    ShopPage,
     CartPage,
     CheckoutPage,
     CMSOrdersPage,
     CMSPage,
     CMSProductsPage,
     LoginPage,
+    ShopPage,
     ThanksPage
 } from "./pages";
-import {NavBar} from "@/shared/";
-import {PrivateRoute} from "@/shared/*";
+import {NavBar, PrivateRoute} from "@/shared/";
+
 
 function App() {
 
