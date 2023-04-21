@@ -4,7 +4,7 @@
  @module ShopPage
  */
 import {Product} from "@/model/product";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {pb} from "../../pocketbase";
 import {ProductCard} from "./components/ProductCard";
 import {ServerError, Spinner} from "@/shared/";
@@ -79,6 +79,7 @@ export function ShopPage(): JSX.Element {
                         />)
                 }
             </div>
+
         </div>
     );
 }
