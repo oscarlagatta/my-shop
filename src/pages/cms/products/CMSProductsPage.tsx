@@ -1,26 +1,46 @@
 import {useProductsService} from "@/services/products";
+import {ServerError, Spinner} from "@/shared/";
+import {useEffect} from "react";
+import {CMSProductForm} from "./components/CMSProductForm";
+import {CMSProductsList} from "./components/CMSProductsList";
+
 
 export function CMSProductsPage() {
-    const { actions, state } = useProductsService();
+    const {state, actions} = useProductsService();
 
-    async function getProductsHandler() {
-        await actions.getProducts();
-    }
+    useEffect(() => {
+        actions.getProducts();
+    }, []);
 
     return (
         <div>
             <h1 className="title">CMS</h1>
 
-            Products Page
+            {state.pending && <Spinner></Spinner>}
+            {state.error && <ServerError message={state.error}/>}
 
-            <hr className="my-8"/>
 
-            {state.pending && <div>loading...</div>}
-            {state.error && <div>Error!!!</div>}
+            {/*FORM: EDIT /ADD */}
+            <CMSProductForm
+                activeItem={state.activeItem}
+                onClose={actions.resetActiveItem}
+                onAdd={actions.addProduct}
+                onEdit={actions.editProduct}
+            />
 
-            <button className="btn primary" onClick={getProductsHandler}>GET</button>
+            <CMSProductsList
+                products={state.products}
+                activeItem={state.activeItem}
+                onEditItem={actions.setActiveItem}
+                onDeleteItem={actions.deleteProduct}
+            />
 
-            <pre>{JSON.stringify(state, null, 2)}</pre>
+            <button className="btn primary uppercase"
+                onClick={() => actions.setActiveItem({})}
+            >
+                Add new
+            </button>
+
         </div>
     )
 }

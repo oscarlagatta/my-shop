@@ -34,6 +34,7 @@ export function productsReducer(state: ProductsState, action: ProductsActions) {
         case 'editProductSuccess':
             return {...state,
                 products: state.products.map( p => p.id === payload.id ? payload : p),
+                activeItem: null,
                 error: null,
                 pending: false
             };
