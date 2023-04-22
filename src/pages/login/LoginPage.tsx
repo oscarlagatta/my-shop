@@ -1,9 +1,9 @@
-import {FormEvent, useEffect} from "react";
-import {useLogin} from "./hooks/useLogin";
 import {selectAuthError, useAuth} from "@/services/auth";
-import {ServerError} from "@/shared/";
 import {selectAuthIsLogged} from "@/services/auth/auth.selectors";
+import {ServerError} from "@/shared/";
+import {FormEvent, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import {useLogin} from "./hooks/useLogin";
 
 export function LoginPage() {
     const navigate = useNavigate();
@@ -38,7 +38,7 @@ export function LoginPage() {
                 <button disabled={!isValid} className="btn primary uppercase" type="submit">Sign in</button>
             </form>
 
-            <pre>{JSON.stringify(formData, null, 2)}</pre>
+
         </div>
     )
 }

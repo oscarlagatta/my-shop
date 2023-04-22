@@ -123,8 +123,6 @@ export function CMSProductForm(props: CMSProductFormProps) {
 
             </form>
 
-            <pre>{JSON.stringify(formData, null, 2)}</pre>
-
         </div>
     )
 }
